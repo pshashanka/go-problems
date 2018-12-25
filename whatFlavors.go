@@ -1,7 +1,21 @@
 package main
 
+import "fmt"
+
 // Complete the whatFlavors function below.
 func whatFlavors(cost []int32, money int32) {
+	mp := make(map[int32]int32)
+
+	for pos, k := range cost {
+		diff := money - k
+		in, found := mp[diff]
+		if found {
+			fmt.Printf("%d %d", in+1, pos+1)
+			fmt.Println()
+		} else if diff > 0 && diff < money {
+			mp[k] = int32(pos)
+		}
+	}
 
 }
 
